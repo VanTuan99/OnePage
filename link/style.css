@@ -70,22 +70,41 @@ html {
   right: 0;
   z-index: 1;
 }
+#header .mobile-menu-btn,
 #header .btn-search {
   float: right;
   display: block;
 }
+#header .mobile-menu-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: none;
+}
+#header .mobile-menu-btn,
 #header .btn-search .search-icon {
   color: #fff;
   font-size: 20px;
   line-height: 46px;
   padding: 0 21px;
 }
+#header .mobile-menu-btn {
+  color: #fff;
+  font-size: 20px;
+  line-height: 46px;
+  padding: 0 29px;
+}
 
 #header .btn-search:hover {
   background-color: #f44336;
   cursor: pointer;
 }
-
+#header .mobile-menu-btn:hover {
+  background-color: #ccc;
+}
+#header .mobile-menu-btn:hover .menu-icon {
+  color: #000;
+}
 #nav {
   display: inline-block;
 }
@@ -121,6 +140,7 @@ html {
 }
 
 #nav .subnav li {
+  display: block;
   width: 150px;
   padding: 10px;
 }
@@ -130,6 +150,7 @@ html {
 }
 #nav .subnav li:hover {
   background-color: #ccc;
+  display: inline-block;
 }
 
 #nav .subnav li a {

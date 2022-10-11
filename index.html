@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The band</title>
     <link rel="stylesheet" href="./link/style.css" />
+    <link rel="stylesheet" href="./link/responsive.css" />
     <link rel="stylesheet" href="./link/icon/themify-icons/themify-icons.css" />
   </head>
   <body>
@@ -16,7 +17,7 @@
           <li><a href="#tour">Tour</a></li>
           <li><a href="#contact">Contact</a></li>
           <li>
-            <a href="">
+            <a href="#">
               More
               <i class="navicon ti-angle-down"></i>
             </a>
@@ -30,6 +31,9 @@
         <!-- end nav -->
         <div class="btn-search">
           <i class="search-icon ti-search"></i>
+        </div>
+        <div id="mobile-menu" class="mobile-menu-btn">
+          <i class="menu-icon ti-menu"></i>
         </div>
         <!-- bt-search -->
       </div>
@@ -255,6 +259,37 @@
       modalContainer.addEventListener("click", function (event) {
         event.stopPropagation;
       });
+    </script>
+
+    <script>
+      var header = document.getElementById("header");
+      var mobileMenu = document.getElementById("mobile-menu");
+      var headerHeight = header.clientHeight;
+
+      // đóng mở mobile menu
+      mobileMenu.onclick = function () {
+        var isClose = header.clientHeight === headerHeight;
+        if (isClose) {
+          header.style.height = "auto";
+        } else {
+          header.style.height = null;
+        }
+      };
+      // tự động đóng khi chọn menu
+      var menuItems = document.querySelectorAll('#nav li a[href *= "#"]');
+      for (var i = 0; i < menuItems.length; i++) {
+        var menuItem = menuItems[i];
+        menuItem.onclick = function () {
+          var isParentMenu =
+            this.nextElementSibling &&
+            this.nextElementSibling.classList.contains("subnav"); //anh em có class là subnav
+          if (isParentMenu) {
+            event.preventDefault();
+          } else {
+            header.style.height = null;
+          }
+        };
+      }
     </script>
   </body>
 </html>
